@@ -1,0 +1,14 @@
+
+---
+- hosts: client
+  become: yes
+  tasks:
+    - name: Supprime paquets
+      apt: name="{{ item }}" state=absent
+      with_items:
+          - lxc*
+          - openvswitch-common
+          - openvswitch-switch
+
+
+

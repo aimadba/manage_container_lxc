@@ -1,0 +1,27 @@
+---
+- hosts: client
+  become: yes
+
+  tasks:
+    - name: Enable openvswitch-switch service
+      systemd:
+       name: openvswitch-switch
+       enabled: true
+       state: started
+
+    - name: cree bridge
+      openvswitch_bridge:
+       bridge: br-int
+       state: present
+
+
+
+
+
+"""
+- name: make interface up
+  net_interface:
+    name: ge-0/0/1
+    description: test-interface
+    enabled: True
+"""

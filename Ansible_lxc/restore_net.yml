@@ -1,0 +1,23 @@
+---
+- hosts: client
+  become: yes
+  tasks:
+
+    - name: detruire bridge
+      openvswitch_bridge:
+        bridge: br-int
+        state: absent
+
+    - name: disable openvswitch-switch service
+      systemd:
+        name: openvswitch-switch
+        enabled: false
+        state: stopped
+
+
+
+
+
+
+
+
